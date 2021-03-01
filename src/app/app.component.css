@@ -1,0 +1,53 @@
+        .container {
+            width: 200px;
+            margin-top: 100px;
+            margin-bottom: 100px;
+            margin-right: 150px;
+            margin-left: 80px;
+            padding: 28px 2px 0px;
+        }
+        
+        .menu {
+            padding: 1.25rem 1rem;
+            border-bottom: 1px solid var(--surface-d);
+            background-color: var(--surface-a);
+        }
+        
+        .parent {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+        }
+        
+        .child {
+            width: 50px;
+            height: 50px;
+            /* Center vertically and horizontally */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -25px 0 0 -25px;
+            padding: 28px 2px 0px;
+            transform: translate(-50%, -50%);
+            /* apply negative top and left margins to truly center the element */
+        }
+        
+        .center {
+            margin: auto;
+            width: 50%;
+            border: 3px solid green;
+            padding: 10px;
+        }
+        
+        .center1 {
+            padding: 70px 0;
+            border: 3px solid green;
+        }
+        
+        .container1 {
+            height: 100vh;
+            overflow: auto;
+            padding: 10px;
+            margin-bottom: 50px;
+        }

@@ -1,0 +1,176 @@
+<p-toolbar>
+    <div class="p-toolbar-group-left">
+        <p-button label="New" icon="pi pi-plus"></p-button>
+        <p-button label="Upload" icon="pi pi-upload" styleClass="p-button-success"></p-button>
+
+
+
+        <i class="pi pi-bars"></i>
+
+        <p-splitButton label="Save" icon="pi pi-check" styleClass="p-button-warning"></p-splitButton>
+    </div>
+
+    <div class="p-toolbar-group-right">
+        <p-button icon="pi pi-search"></p-button>
+        <p-button icon="pi pi-calendar" styleClass="p-button-success"></p-button>
+        <p-button icon="pi pi-times" styleClass="p-button-danger"></p-button>
+    </div>
+
+</p-toolbar>
+<p-card header="BOOK CRUD" [style]="{'width': '80rem', 'margin-bottom': '2em'}">
+
+
+    <!--<div>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Author</th>
+
+                <th scope="col">Action Edit</th>
+                <th scope="col">Action Delete</th>
+
+            </tr>
+        </thead>
+        <tbody *ngFor="let book of books">
+            <tr>
+
+                <td>{{book.id}}</td>
+                <td>{{book.name}}</td>
+                <td>{{book.author}}</td>
+                <td>
+                    <button type="button" (click)="selectedBook(book.id,book)" class="btn btn-info">Edit</button></td>
+                <td>
+                    <button type="button" (click)="deleteData(book.id)" class=" btn btn-danger ">Delete</button></td>
+
+            </tr>
+        </tbody>
+    </table> </div>-->
+
+    <p-table [value]="books">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Code</th>
+                <th>Name</th>
+                <th>Author</th>
+                <th>Actions</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-book>
+            <tr>
+                <td>{{book.id}}</td>
+                <td>{{book.name}}</td>
+                <td>{{book.author}}</td>
+                <td>
+                    <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="selectedBook(book)"></button>
+                    <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteData(book.id)"></button>
+                </td>
+
+            </tr>
+        </ng-template>
+    </p-table>
+
+    <p-button (click)="showBasicDialog()" icon="pi pi-plus" label="Add new book"></p-button>
+
+    <p-dialog header="Add new book" [responsive]="true" [style]="{width: '400px'}" [(visible)]=" displayBasic ">
+        <ng-template pTemplate="content">
+            <div class="ui-g ui-fluid ">
+                <div class="ui-g-12 ">
+                    <div class="ui-g-4 ">
+                        <label for="name ">Name book</label>
+                    </div>
+                    <div class="ui-g-8 ">
+                        <input pInputText id="name " [(ngModel)]="book.name " />
+                    </div>
+                </div>
+
+
+                <div class="ui-g-12 ">
+                    <div class="ui-g-4 ">
+                        <label for="author ">Author</label>
+                    </div>
+                    <div class="ui-g-8 ">
+                        <input pInputText id="author " [(ngModel)]="book.author " />
+                    </div>
+                </div>
+            </div>
+            <p-footer>
+                <div class="ui-dialog-buttonpane ui-helper-clearfix ">
+                    <p-button icon="pi pi-check" ((click)="insertData() " label="save" class="ui-button-success"></p-button>
+
+                    <p-button icon="pi pi-close" (click)="displayType=false" label="cancel" Class="ui-button-danger"></p-button>
+                </div>
+            </p-footer>
+        </ng-template>
+
+    </p-dialog>
+</p-card>
+<div *ngIf="book ">
+    <app-edit [book]="book "></app-edit>
+</div>
+<p-card header=" BOOK TYPE CRUD" [style]="{'width': '80rem', 'margin-bottom': '2em'}">
+
+    <p-table [value]="types">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Code</th>
+                <th>Name</th>
+                <th>Details</th>
+                <th>Action</th>
+
+
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-type>
+            <tr>
+                <td>{{type.id}}</td>
+                <td>{{type.name}}</td>
+                <td>{{type.details}}</td>
+                <td>
+                    <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="selectedType(type)"></button>
+                    <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteType(type.id)"></button>
+                </td>
+
+            </tr>
+        </ng-template>
+    </p-table>
+
+    <div *ngIf="type ">
+        <app-edit-type [type]="type "></app-edit-type>
+    </div>
+    <p-button (click)="showTypeDialog()" icon="pi pi-plus" label="Add new Type book"></p-button>
+
+    <p-dialog header="Add new Type book" [responsive]="true" [style]="{width: '400px'}" [(visible)]=" displayType ">
+        <ng-template pTemplate="content">
+            <div class="ui-g ui-fluid ">
+                <div class="ui-g-12 ">
+                    <div class="ui-g-4 ">
+                        <label for="name ">Name Type</label>
+                    </div>
+                    <div class="ui-g-8 ">
+                        <input pInputText id="name " [(ngModel)]="type.name " />
+                    </div>
+                </div>
+
+
+                <div class="ui-g-12 ">
+                    <div class="ui-g-4 ">
+                        <label for="deails ">Details</label>
+                    </div>
+                    <div class="ui-g-8 ">
+                        <input pInputText id="details " [(ngModel)]="type.details " />
+                    </div>
+                </div>
+            </div>
+            <p-footer>
+                <div class="ui-dialog-buttonpane ui-helper-clearfix ">
+                    <p-button icon="pi pi-check" ((click)="insertType() " label="save" class="ui-button-success"></p-button>
+                    <p-button icon="pi pi-close" (click)="display=false" label="cancel" Class="ui-button-danger"></p-button>
+
+                </div>
+            </p-footer>
+        </ng-template>
+
+    </p-dialog>
+</p-card>

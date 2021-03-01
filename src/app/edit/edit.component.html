@@ -1,0 +1,26 @@
+<p-dialog [(visible)]="edit">
+    <ng-template pTemplate="header">
+        Edit book </ng-template>
+    <form>
+        <div class="form group">
+
+            <label for="name"> book Name</label>
+
+            <input id="name" type="text" pInputText [(ngModel)]="book.name" name="name">
+        </div>
+
+        <div class="form group">
+
+            <label for="author"> Author Name</label>
+
+            <input id="author" type="text" pInputText [(ngModel)]="book.author" name="author">
+
+
+        </div>
+    </form>
+    <p-footer>
+        <p-button icon="pi pi-check" (click)="editBookInfo(book)" label="save" class="ui-button-success"></p-button>
+        <p-button icon="pi pi-close" (click)="display=false" label="cancel" Class="ui-button-danger"></p-button>
+
+    </p-footer>
+</p-dialog>
