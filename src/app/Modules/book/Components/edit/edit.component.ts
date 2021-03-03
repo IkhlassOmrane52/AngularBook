@@ -1,6 +1,6 @@
 import { Component, OnInit,Input, Output,EventEmitter } from '@angular/core';
-import { BookService } from '../shared/book.service';
-import { Book } from '../shared/book';
+import { BookService } from '../../../../shared/Services/book.service';
+import { Book } from '../../../../shared/Class/book/book';
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',

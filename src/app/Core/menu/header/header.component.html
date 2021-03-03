@@ -1,1 +1,12 @@
-<p-tabMenu [model]="items"></p-tabMenu>
+<p-menubar [model]="items" [style]="{'background-color': '#808080'}">
+    <ng-template pTemplate="start">
+        <img src="assets/image/book.jpg" height="40" class="p-mr-2">
+    </ng-template>
+    <ng-template pTemplate="end">
+        <div class="badges">
+            <i class="pi pi-bell p-mr-4 p-text-info" pBadge style="font-size: 2rem" value="2"></i>
+            <i class="pi pi-calendar p-mr-4 p-text-warning" pBadge style="font-size: 2rem" [value]="'10+'" severity="danger"></i>
+            <i class="pi pi-envelope p-text-info" pBadge style="font-size: 2rem" severity="danger"></i>
+        </div>
+    </ng-template>
+</p-menubar>
